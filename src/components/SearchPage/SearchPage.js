@@ -20,14 +20,17 @@ function SearchPage() {
         loadUserList();
     }, []);
 
-    function sort(param, order) {
-        // console.log(`sort function called`);
-
-        const sortParam = param.toLowerCase();
-        // console.log('clicked!', sortParam);
+    function sort(sortParam, order) {
         showUserList.sort(function(firstEl, secondEl) {
-            const firstParam = firstEl[sortParam].toLowerCase();
-            const secondParam = secondEl[sortParam].toLowerCase();
+            let firstParam = '';
+            let secondParam = '';
+            if (!sortParam === 'id') {
+                firstParam = firstEl[sortParam].toLowerCase();
+                secondParam = secondEl[sortParam].toLowerCase();
+            } else {
+                firstParam = firstEl[sortParam];
+                secondParam = secondEl[sortParam];
+            }
             if (order === 'asc') {
                 if (firstParam > secondParam) {
                     return 1;
@@ -69,18 +72,9 @@ function SearchPage() {
                         className="form-control"
                         placeholder="Type name, username or email to search"
                     />
-                    {/* <div className="input-group-append">
-                        <button
-                            className="btn btn-outline-primary"
-                            type="button"
-                        >
-                            Search
-                        </button>
-                    </div> */}
                 </div>
             </form>
             <div>
-                {/* <div className="container"> */}
                 <div className="table-responsive">
                     <table className="table table-striped table-hover">
                         <thead>
@@ -149,11 +143,7 @@ function SearchPage() {
                         </tbody>
                     </table>
                 </div>
-                {/* </div> */}
-                {/* closing container div */}
-                {/* closing div */}
             </div>
-            {/* <Table /> */}
         </>
     );
 }
