@@ -1,24 +1,30 @@
 import React, { useState, useEffect } from 'react';
-// import Table from '../Table/Table';
-// import EmployeeSearchForm from '../EmployeeSearchForm/EmployeeSearchForm';
-import users from '../../db';
 import TableRow from '../TableRow/TableRow';
 
 function SearchPage() {
-    const [searchInput, setSearchInput] = useState('');
     const [userList, setUserList] = useState([]);
     const [showUserList, setNewUserList] = useState([]);
 
-    useEffect(function() {
+    async function loadUserList() {
+        const result = await fetch(
+            'https://jsonplaceholder.typicode.com/users'
+        );
+
+        const users = await result.json();
+        // console.log('users is:', users);
         setUserList(users);
         setNewUserList(users);
+    }
+
+    useEffect(function() {
+        loadUserList();
     }, []);
 
     function sort(param, order) {
-        console.log(`sort function called`);
+        // console.log(`sort function called`);
 
         const sortParam = param.toLowerCase();
-        console.log('clicked!', sortParam);
+        // console.log('clicked!', sortParam);
         showUserList.sort(function(firstEl, secondEl) {
             const firstParam = firstEl[sortParam].toLowerCase();
             const secondParam = secondEl[sortParam].toLowerCase();
@@ -39,7 +45,7 @@ function SearchPage() {
     }
 
     function handleInputChange(event) {
-        console.log('handleInputChange called...');
+        // console.log('handleInputChange called...');
         const searchString = event.target.value.toLowerCase();
         if (!searchString.length) {
             setNewUserList(userList);
@@ -50,7 +56,7 @@ function SearchPage() {
                 user.username.toLowerCase().indexOf(searchString) === 0 ||
                 user.email.toLowerCase().indexOf(searchString) === 0
         );
-        console.log(newUserList);
+        // console.log(newUserList);
         setNewUserList([...newUserList]);
     }
     return (
