@@ -89,48 +89,48 @@ function SearchPage() {
                                     #{'     '}
                                     <i
                                         onClick={() => sort('id', 'dsc')}
-                                        class="fas fa-arrow-up"
+                                        className="fas fa-arrow-up"
                                     ></i>
                                     {'     '}
                                     <i
                                         onClick={() => sort('id', 'asc')}
-                                        class="fas fa-arrow-down"
+                                        className="fas fa-arrow-down"
                                     ></i>
                                 </th>
                                 <th scope="col">
                                     Name{'     '}
                                     <i
                                         onClick={() => sort('name', 'dsc')}
-                                        class="fas fa-arrow-up"
+                                        className="fas fa-arrow-up"
                                     ></i>
                                     {'     '}
                                     <i
                                         onClick={() => sort('name', 'asc')}
-                                        class="fas fa-arrow-down"
+                                        className="fas fa-arrow-down"
                                     ></i>
                                 </th>
                                 <th scope="col">
                                     Username{'     '}
                                     <i
                                         onClick={() => sort('username', 'dsc')}
-                                        class="fas fa-arrow-up"
+                                        className="fas fa-arrow-up"
                                     ></i>
                                     {'     '}
                                     <i
                                         onClick={() => sort('username', 'asc')}
-                                        class="fas fa-arrow-down"
+                                        className="fas fa-arrow-down"
                                     ></i>
                                 </th>
                                 <th scope="col">
                                     Email{'     '}
                                     <i
                                         onClick={() => sort('email', 'dsc')}
-                                        class="fas fa-arrow-up"
+                                        className="fas fa-arrow-up"
                                     ></i>
                                     {'     '}
                                     <i
                                         onClick={() => sort('email', 'asc')}
-                                        class="fas fa-arrow-down"
+                                        className="fas fa-arrow-down"
                                     ></i>
                                 </th>
                                 <th scope="col">Phone</th>
