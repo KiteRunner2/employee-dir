@@ -24,7 +24,8 @@ function SearchPage() {
         const newUserList = userList.filter(
             user =>
                 user.name.toLowerCase().indexOf(searchString) === 0 ||
-                user.username.toLowerCase().indexOf(searchString) === 0
+                user.username.toLowerCase().indexOf(searchString) === 0 ||
+                user.email.toLowerCase().indexOf(searchString) === 0
         );
         console.log(newUserList);
         setNewUserList(newUserList);
@@ -37,16 +38,16 @@ function SearchPage() {
                         onChange={e => handleInputChange(e)}
                         type="text"
                         className="form-control"
-                        placeholder="Search employee"
+                        placeholder="Type name, username or email to search"
                     />
-                    <div className="input-group-append">
+                    {/* <div className="input-group-append">
                         <button
                             className="btn btn-outline-primary"
                             type="button"
                         >
                             Search
                         </button>
-                    </div>
+                    </div> */}
                 </div>
             </form>
             <div>
