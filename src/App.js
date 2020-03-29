@@ -9,8 +9,10 @@ function App() {
     return (
         <div>
             <Header />
-            <SearchPage />
-            {console.log(users)}
+            <div className="container">
+                <SearchPage />
+                {console.log(users)}
+            </div>
         </div>
     );
 }

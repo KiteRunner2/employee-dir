@@ -2,10 +2,10 @@ import React from 'react';
 
 function Header() {
     return (
-        <div class="jumbotron jumbotron-fluid text-center">
-            <div class="container">
-                <h1 class="display-4">Employee directory</h1>
-                <p class="lead"></p>
+        <div className="jumbotron jumbotron-fluid text-center">
+            <div className="container">
+                <h1 className="display-4">Employee directory</h1>
+                <p className="lead"></p>
             </div>
         </div>
     );
