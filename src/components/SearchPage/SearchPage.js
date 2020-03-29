@@ -71,7 +71,7 @@ function SearchPage() {
                         onChange={e => handleInputChange(e)}
                         type="text"
                         className="form-control"
-                        placeholder="Type name, username or email to search"
+                        placeholder="Type name, username, email or id to search"
                     />
                 </div>
             </form>
