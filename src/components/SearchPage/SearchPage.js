@@ -57,7 +57,8 @@ function SearchPage() {
             user =>
                 user.name.toLowerCase().indexOf(searchString) === 0 ||
                 user.username.toLowerCase().indexOf(searchString) === 0 ||
-                user.email.toLowerCase().indexOf(searchString) === 0
+                user.email.toLowerCase().indexOf(searchString) === 0 ||
+                user.id.toString().indexOf(searchString) === 0
         );
         // console.log(newUserList);
         setNewUserList([...newUserList]);
