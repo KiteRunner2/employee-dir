@@ -14,20 +14,25 @@ function SearchPage() {
         setNewUserList(users);
     }, []);
 
-    function sort(event, order) {
+    function sort(param, order) {
         console.log(`sort function called`);
-        const sortParam = event.target.textContent.toLowerCase();
+
+        const sortParam = param.toLowerCase();
         console.log('clicked!', sortParam);
         showUserList.sort(function(firstEl, secondEl) {
             const firstParam = firstEl[sortParam].toLowerCase();
             const secondParam = secondEl[sortParam].toLowerCase();
-            // if (firstParam > secondParam) {
-            //     return 1;
-            // }
-            if (firstParam < secondParam) {
-                return 1;
+            if (order === 'asc') {
+                if (firstParam > secondParam) {
+                    return 1;
+                }
+                return 0;
+            } else {
+                if (firstParam < secondParam) {
+                    return 1;
+                }
+                return 0;
             }
-            return 0;
         });
         // console.log(userList);
         setNewUserList([...showUserList]);
@@ -74,15 +79,53 @@ function SearchPage() {
                     <table className="table table-striped table-hover">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
-                                <th onClick={e => sort(e)} scope="col">
-                                    Name
+                                <th scope="col">
+                                    #{'     '}
+                                    <i
+                                        onClick={() => sort('id', 'dsc')}
+                                        class="fas fa-arrow-up"
+                                    ></i>
+                                    {'     '}
+                                    <i
+                                        onClick={() => sort('id', 'asc')}
+                                        class="fas fa-arrow-down"
+                                    ></i>
                                 </th>
-                                <th onClick={e => sort(e)} scope="col">
-                                    Username
+                                <th scope="col">
+                                    Name{'     '}
+                                    <i
+                                        onClick={() => sort('name', 'dsc')}
+                                        class="fas fa-arrow-up"
+                                    ></i>
+                                    {'     '}
+                                    <i
+                                        onClick={() => sort('name', 'asc')}
+                                        class="fas fa-arrow-down"
+                                    ></i>
                                 </th>
-                                <th onClick={e => sort(e)} scope="col">
-                                    Email
+                                <th scope="col">
+                                    Username{'     '}
+                                    <i
+                                        onClick={() => sort('username', 'dsc')}
+                                        class="fas fa-arrow-up"
+                                    ></i>
+                                    {'     '}
+                                    <i
+                                        onClick={() => sort('username', 'asc')}
+                                        class="fas fa-arrow-down"
+                                    ></i>
+                                </th>
+                                <th scope="col">
+                                    Email{'     '}
+                                    <i
+                                        onClick={() => sort('email', 'dsc')}
+                                        class="fas fa-arrow-up"
+                                    ></i>
+                                    {'     '}
+                                    <i
+                                        onClick={() => sort('email', 'asc')}
+                                        class="fas fa-arrow-down"
+                                    ></i>
                                 </th>
                                 <th scope="col">Phone</th>
                             </tr>
