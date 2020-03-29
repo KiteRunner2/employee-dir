@@ -14,13 +14,31 @@ function SearchPage() {
         setNewUserList(users);
     }, []);
 
-    function sort(event) {
-        console.log('clicked!', event.target.textContent);
+    function sort(event, order) {
+        console.log(`sort function called`);
+        const sortParam = event.target.textContent.toLowerCase();
+        console.log('clicked!', sortParam);
+        showUserList.sort(function(firstEl, secondEl) {
+            const firstParam = firstEl[sortParam].toLowerCase();
+            const secondParam = secondEl[sortParam].toLowerCase();
+            // if (firstParam > secondParam) {
+            //     return 1;
+            // }
+            if (firstParam < secondParam) {
+                return 1;
+            }
+            return 0;
+        });
+        // console.log(userList);
+        setNewUserList([...showUserList]);
     }
 
     function handleInputChange(event) {
         console.log('handleInputChange called...');
         const searchString = event.target.value.toLowerCase();
+        if (!searchString.length) {
+            setNewUserList(userList);
+        }
         const newUserList = userList.filter(
             user =>
                 user.name.toLowerCase().indexOf(searchString) === 0 ||
@@ -28,7 +46,7 @@ function SearchPage() {
                 user.email.toLowerCase().indexOf(searchString) === 0
         );
         console.log(newUserList);
-        setNewUserList(newUserList);
+        setNewUserList([...newUserList]);
     }
     return (
         <>
@@ -63,7 +81,9 @@ function SearchPage() {
                                 <th onClick={e => sort(e)} scope="col">
                                     Username
                                 </th>
-                                <th scope="col">Email</th>
+                                <th onClick={e => sort(e)} scope="col">
+                                    Email
+                                </th>
                                 <th scope="col">Phone</th>
                             </tr>
                         </thead>
